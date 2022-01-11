@@ -2,19 +2,47 @@ function print(str) {
   console.log(str);
 }
 
-function bouncer(arr) {
-  let newArr = [];
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i]) {
-      print(arr[i]);
-      newArr.push(arr[i]);
-      print(newArr);
-    }
-  }
-  return newArr;
-}
+// function mutation(arr) {
+//   let checkChars = new Array(26).fill(0);
+//   let first = arr[0].toLowerCase();
+//   let second = arr[1].toLowerCase();
+//   for (let i = 0; i < first.length; i++) {
+//     checkChars[first.charCodeAt(i) - 97] = 1;
+//   }
+//   for (let i = 0; i < second.length; i++) {
+//     if (checkChars[second.charCodeAt(i) - 97] != 1) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+// print(mutation(["hello", "neo"]));
+// function getIndexToIns(arr, num) {
+//   arr.push(num);
+//   print(arr);
+//   //as default sort function treats the array elements as strings
+//   arr.sort(function (a, b) {
+//     return a - b;
+//   });
+//   // print(arr);
+//   return arr.indexOf(num);
+// }
 
-print(bouncer([false, null, 0, NaN, undefined, ""]));
+// print(getIndexToIns([3, 10, 5], 3));
+
+// function bouncer(arr) {
+//   let newArr = [];
+//   for (var i = 0; i < arr.length; i++) {
+//     if (arr[i]) {
+//       print(arr[i]);
+//       newArr.push(arr[i]);
+//       print(newArr);
+//     }
+//   }
+//   return newArr;
+// }
+
+// print(bouncer([false, null, 0, NaN, undefined, ""]));
 
 // function frankenSplice(arr1, arr2, n) {
 //   let arr3;
