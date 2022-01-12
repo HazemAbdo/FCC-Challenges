@@ -2,6 +2,25 @@ function print(str) {
   console.log(str);
 }
 
+// function chunkArrayInGroups(arr, size) {
+//   let newArr = [];
+//   // quot = Math.round(arr.length / size);
+//   // rem = arr.length % size;
+//   // if (rem === 0) {
+//     for (let i = 0; i < arr.length; i += size) {
+//       newArr.push(arr.slice(i, i + size));
+//     }
+//   // } else {
+//   //   for (let i = 0; i < arr.length - rem; i += size) {
+//   //     newArr.push(arr.slice(i, i + size));
+//   //   }
+//   //   newArr.push(arr.slice(arr.length - rem, arr.length));
+//   // }
+//   return newArr;
+// }
+
+// print(chunkArrayInGroups([0, 1, 2, 3, 4, 5], 5));
+
 // function mutation(arr) {
 //   let checkChars = new Array(26).fill(0);
 //   let first = arr[0].toLowerCase();
