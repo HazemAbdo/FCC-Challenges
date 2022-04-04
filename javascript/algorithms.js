@@ -1,7 +1,36 @@
 function print(str) {
   console.log(str);
 }
+//make a set called unique
+function diffArray(arr1, arr2) {
+  let uniqueArr = [];
+  for (let i = 0; i < arr1.length; i++) {
+    uniqueArr.push(arr1[i]);
+  }
+  for (let i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) !== -1) {
+      //delete the element
+      uniqueArr.splice(uniqueArr.indexOf(arr2[i]), 1);
+    }
+    else{
+      uniqueArr.push(arr2[i]);
+    }
+  }
+  //convert set to array
+  return uniqueArr;
+}
 
+let newArr=diffArray(["andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]);
+console.log("newArr", newArr);
+// function sumAll(arr) {
+//   let sumBetween = 0;
+//   for (let i = Math.min(...arr); i <= Math.max(...arr); i++) {
+//     sumBetween += i;
+//   }
+//   return sumBetween;
+// }
+
+// print(sumAll([1, 20]));
 // function chunkArrayInGroups(arr, size) {
 //   let newArr = [];
 //   // quot = Math.round(arr.length / size);

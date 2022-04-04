@@ -1,20 +1,6 @@
 function print(str) {
   console.log(str);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // function add(x) {
 //   // Only change code below this line
 // return function(y)
