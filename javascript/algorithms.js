@@ -1,27 +1,45 @@
 function print(str) {
   console.log(str);
 }
-//make a set called unique
-function diffArray(arr1, arr2) {
-  let uniqueArr = [];
-  for (let i = 0; i < arr1.length; i++) {
-    uniqueArr.push(arr1[i]);
-  }
-  for (let i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) !== -1) {
-      //delete the element
-      uniqueArr.splice(uniqueArr.indexOf(arr2[i]), 1);
-    }
-    else{
-      uniqueArr.push(arr2[i]);
+
+function destroyer(arr) {
+  //arguments is an array-like object containing the function's argument values
+  for (var i = 1; i < arguments.length; i++) {
+    for (var j = 0; j < arr.length; j++) {
+      if (arr[j] === arguments[i]) {
+        arr.splice(j, 1);
+        //we need to decrement j because we just removed an element so 
+        //the index of the next element is now j instead of j+1
+        j--;
+      }
     }
   }
-  //convert set to array
-  return uniqueArr;
+  return arr;
 }
 
-let newArr=diffArray(["andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]);
-console.log("newArr", newArr);
+print(destroyer([3, 5, 1, 2, 2], 2, 3, 5));
+
+//make a set called unique
+// function diffArray(arr1, arr2) {
+//   let uniqueArr = [];
+//   for (let i = 0; i < arr1.length; i++) {
+//     uniqueArr.push(arr1[i]);
+//   }
+//   for (let i = 0; i < arr2.length; i++) {
+//     if (arr1.indexOf(arr2[i]) !== -1) {
+//       //delete the element
+//       uniqueArr.splice(uniqueArr.indexOf(arr2[i]), 1);
+//     }
+//     else{
+//       uniqueArr.push(arr2[i]);
+//     }
+//   }
+//   //convert set to array
+//   return uniqueArr;
+// }
+
+// let newArr=diffArray(["andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]);
+// console.log("newArr", newArr);
 // function sumAll(arr) {
 //   let sumBetween = 0;
 //   for (let i = Math.min(...arr); i <= Math.max(...arr); i++) {
