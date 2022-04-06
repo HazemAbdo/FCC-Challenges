@@ -1,23 +1,54 @@
 function print(str) {
   console.log(str);
 }
-
-function destroyer(arr) {
-  //arguments is an array-like object containing the function's argument values
-  for (var i = 1; i < arguments.length; i++) {
-    for (var j = 0; j < arr.length; j++) {
-      if (arr[j] === arguments[i]) {
-        arr.splice(j, 1);
-        //we need to decrement j because we just removed an element so 
-        //the index of the next element is now j instead of j+1
-        j--;
+function whatIsInAName(collection, source) {
+  const arr = [];
+  // Only change code below this line
+  const keys = Object.keys(source);
+  collection.forEach((obj) => {
+    let flag = true;
+    keys.forEach((key) => {
+      if (obj[key] !== source[key]) {
+        flag = false;
       }
+    });
+    if (flag) {
+      arr.push(obj);
     }
-  }
+  });
+  // Only change code above this line
   return arr;
 }
 
-print(destroyer([3, 5, 1, 2, 2], 2, 3, 5));
+whatIsInAName(
+  [
+    { first: "Romeo", last: "Montague" },
+    { first: "Mercutio", last: null },
+    { first: "Tybalt", last: "Capulet" },
+  ],
+  { last: "Capulet" }
+);
+
+// function destroyer(arr, ...valsToremove) {
+//   return arr.filter((item) => !valsToremove.includes(item));
+// }
+// print(destroyer([3, 5, 1, 2, 2], 2, 3, 5));
+// function destroyer(arr) {
+//   //arguments is an array-like object containing the function's argument values
+//   for (var i = 1; i < arguments.length; i++) {
+//     for (var j = 0; j < arr.length; j++) {
+//       if (arr[j] === arguments[i]) {
+//         arr.splice(j, 1);
+//         //we need to decrement j because we just removed an element so
+//         //the index of the next element is now j instead of j+1
+//         j--;
+//       }
+//     }
+//   }
+//   return arr;
+// }
+
+// print(destroyer([3, 5, 1, 2, 2], 2, 3, 5));
 
 //make a set called unique
 // function diffArray(arr1, arr2) {
