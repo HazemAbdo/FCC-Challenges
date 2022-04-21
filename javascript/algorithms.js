@@ -1,34 +1,38 @@
 function print(str) {
   console.log(str);
 }
-function whatIsInAName(collection, source) {
-  const arr = [];
-  // Only change code below this line
-  const keys = Object.keys(source);
-  collection.forEach((obj) => {
-    let flag = true;
-    keys.forEach((key) => {
-      if (obj[key] !== source[key]) {
-        flag = false;
-      }
-    });
-    if (flag) {
-      arr.push(obj);
-    }
-  });
-  // Only change code above this line
-  return arr;
+function spinalCase(str) {
+  const regex = /\_|\s/g;
+  //To set a space between lower case letters and upper case ones
+  //helloWorld-->hello World
+  //this trick is to put - before upper case words
+  str = str.replace(/([a-z])([A-Z])/g, "$1 $2");
+  return (str = str.replace(regex, "-").toLowerCase());
 }
 
-whatIsInAName(
-  [
-    { first: "Romeo", last: "Montague" },
-    { first: "Mercutio", last: null },
-    { first: "Tybalt", last: "Capulet" },
-  ],
-  { last: "Capulet" }
-);
+print(spinalCase("thisIsSpinalTap"));
 
+// function whatIsInAName(collection, source) {
+//   const arr = [];
+//   // Only change code below this line
+//   let keys = Object.keys(source);
+//   console.log("whatIsInAName ~ source", source);
+//   return collection.filter((obj) =>
+//     keys.every((key) => obj[key] === source[key] && obj.hasOwnProperty(key))
+//   );
+
+//   // Only change code above this line
+// }
+// print(
+//   whatIsInAName(
+//     [
+//       { first: "Romeo", last: "Montague" },
+//       { first: "Mercutio", last: null },
+//       { first: "Tybalt", last: "Capulet" },
+//     ],
+//     { last: "Capulet" }
+//   )
+// );
 // function destroyer(arr, ...valsToremove) {
 //   return arr.filter((item) => !valsToremove.includes(item));
 // }
