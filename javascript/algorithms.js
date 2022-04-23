@@ -1,16 +1,153 @@
 function print(str) {
   console.log(str);
 }
-function spinalCase(str) {
-  const regex = /\_|\s/g;
-  //To set a space between lower case letters and upper case ones
-  //helloWorld-->hello World
-  //this trick is to put - before upper case words
-  str = str.replace(/([a-z])([A-Z])/g, "$1 $2");
-  return (str = str.replace(regex, "-").toLowerCase());
+
+function convertHTML(str) {
+  // Use Object Lookup to declare as many HTML entities as needed.
+  const htmlEntities = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&apos;",
+  };
+  // Using a regex, replace characters with it's corresponding html entity
+  //second argument in replace is a method that deals with the match character
+  return str.replace(/([&<>\"'])/g, (match) => htmlEntities[match]);
 }
 
-print(spinalCase("thisIsSpinalTap"));
+// test here
+print(convertHTML("Dolce & Gabbana"));
+
+// function convertHTML(str) {
+//   var newStr = "";
+//   var pairs = {
+//     "&": "&amp;",
+//     "<": "&lt;",
+//     ">": "&gt;",
+//     '"': "&quot;",
+//     "'": "&apos;",
+//   };
+//   //convert str to array
+
+//   for (var i = 0; i < str.length; i++) {
+//     if (pairs.hasOwnProperty(str[i])) {
+//       print("hello");
+//       newStr += pairs[str[i]];
+//       console.log("convertHTML ~ pairs[str[i]]", pairs[str[i]]);
+//     } else {
+//       newStr += str[i];
+//     }
+//   }
+//   console.log("convertHTML ~ arr", newStr);
+//   return newStr;
+// }
+
+// convertHTML('Stuff in "quotation marks"');
+
+//Gameeeeeeeeeeeeeeeeeeeeed
+// function uniteUnique(...arr) {
+//   return [...new Set(arr.flat())];
+// }
+// function uniteUnique(arr) {
+//   //we use arguments when we don't know the # of parameters
+//   var numberArray = [];
+//   for (var i = 0; i < arguments.length; i++) {
+//     for (const j of arguments[i]) {
+//       numberArray.push(j);
+//     }
+//   }
+//   //we can pass an array to set constructor
+//   const numbersSet = new Set(numberArray);
+//   //we can use spread operator with set
+//   return [...numbersSet];
+// }
+
+// print(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
+
+// function fearNotLetter(str) {
+//   let firstChar = str[0].charCodeAt(0);
+//   let lastChar = str[str.length - 1].charCodeAt(0);
+//   let lenWithMissing = lastChar - firstChar + 1;
+//   //97 98 99 100 a b c d it is just an aritm. sequence
+//   let assumedSum = (lenWithMissing / 2) * (firstChar + lastChar);
+
+//   let actualSum = 0;
+//   for (var i = 0; i < str.length; i++) {
+//     actualSum += str.charCodeAt(i);
+//   }
+//   //the difference will be the missing letter
+//   return assumedSum == actualSum
+//     ? undefined
+//     : String.fromCharCode(assumedSum - actualSum);
+// }
+
+// print(fearNotLetter("abce"));
+
+// function returnPair(char) {
+//   let returnedPair;
+//   switch (char) {
+//     case (char = "A"):
+//       returnedPair = ["A", "T"];
+//       break;
+//     case (char = "T"):
+//       returnedPair = ["T", "A"];
+//       break;
+//     case (char = "C"):
+//       returnedPair = ["C", "G"];
+//       break;
+//     case (char = "G"):
+//       returnedPair = ["G", "C"];
+//       break;
+//     default:
+//       returnedPair = [];
+//   }
+//   return returnedPair;
+// }
+// function pairElement(str) {
+//   let returnedArray = [];
+//   for (char in str) {
+//     print(str[char]);
+//     returnedArray.push(returnPair(str[char]));
+//   }
+//   return returnedArray;
+// }
+
+// print(pairElement("GCG"));
+
+// function myReplace(str, before, after) {
+//   if (before[0] === before[0].toUpperCase()) {
+//     after = after.charAt(0).toUpperCase() + after.slice(1);
+//   } else {
+//     after = after.charAt(0).toLowerCase() + after.slice(1);
+//   }
+//   return str.replace(before, after);
+// }
+
+// print(
+//   myReplace("A quick brown fox jumped over the lazy dog", "jumped", "Leaped")
+// );
+
+// function translatePigLatin(str) {
+//   const vowels = /^[a i o u e]/i;
+//   if (vowels.test(str)) {
+//     return str + "way";
+//   }
+//   return str.replace(/(\w+?)([aeiou]\w+)/i, "$2$1") + "y";
+// }
+
+// print(translatePigLatin("cklmnopqonsonant"));
+
+// function spinalCase(str) {
+//   const regex = /\_|\s/g;
+//   //To set a space between lower case letters and upper case ones
+//   //helloWorld-->hello World
+//   //this trick is to put - before upper case words
+//   str = str.replace(/([a-z])([A-Z])/g, "$1 $2");
+//   return (str = str.replace(regex, "-").toLowerCase());
+// }
+
+// print(spinalCase("thisIsSpinalTap"));
 
 // function whatIsInAName(collection, source) {
 //   const arr = [];
