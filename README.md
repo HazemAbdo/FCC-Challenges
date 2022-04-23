@@ -1,2 +1,2 @@
 # FCC-Challenges
-Doing Free-code-camp challenges.
+Solving Free-code-camp challenges.
