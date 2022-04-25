@@ -1,23 +1,54 @@
 function print(str) {
   console.log(str);
 }
-
-function sumPrimes(num) {
-  // Prime number sieve
-  let isPrime = Array(num + 1).fill(true);
-  // 0 and 1 are not prime
-  isPrime[0] = false;
-  isPrime[1] = false;
-  for (let i = 2; i <= Math.sqrt(num); i++) {
-    if (isPrime[i]) {
-      // i has not been marked false -- it is prime
-      for (let j = i * i; j <= num; j += i) isPrime[j] = false;
+function range(start, end) {
+  return Array(end - start + 1)
+    .fill()
+    .map((_, idx) => start + idx);
+}
+function smallestCommons(arr) {
+  //sort arr in ascending order
+  arr.sort(function (a, b) {
+    return a - b;
+  });
+  let max = Math.max(...arr);
+  let incr = max;
+  arr = range(arr[0], arr[1]);
+  let flag = true;
+  while (flag === true) {
+    arr.map((i) => {
+      if (max % i !== 0) {
+        flag = false;
+      }
+    });
+    if (flag === false) {
+      max += incr;
+      flag = true;
+    } else {
+      flag = false;
     }
   }
-
-  // Sum all values still marked prime
-  return isPrime.reduce((sum, prime, index) => (prime ? sum + index : sum), 0);
+  return max;
 }
+
+print(smallestCommons([1, 5]));
+
+// function sumPrimes(num) {
+//   // Prime number sieve
+//   let isPrime = Array(num + 1).fill(true);
+//   // 0 and 1 are not prime
+//   isPrime[0] = false;
+//   isPrime[1] = false;
+//   for (let i = 2; i <= Math.sqrt(num); i++) {
+//     if (isPrime[i]) {
+//       // i has not been marked false -- it is prime
+//       for (let j = i * i; j <= num; j += i) isPrime[j] = false;
+//     }
+//   }
+
+//   // Sum all values still marked prime
+//   return isPrime.reduce((sum, prime, index) => (prime ? sum + index : sum), 0);
+// }
 
 // function sumPrimes(num) {
 //   var sum = 0;
@@ -38,7 +69,7 @@ function sumPrimes(num) {
 //   return sum;
 // }
 
-print(sumPrimes(977));
+// print(sumPrimes(977));
 // test here
 // function sumFibs(num) {
 //   var sum = 2;
