@@ -2,22 +2,74 @@ function print(str) {
   console.log(str);
 }
 
-function convertHTML(str) {
-  // Use Object Lookup to declare as many HTML entities as needed.
-  const htmlEntities = {
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&apos;",
-  };
-  // Using a regex, replace characters with it's corresponding html entity
-  //second argument in replace is a method that deals with the match character
-  return str.replace(/([&<>\"'])/g, (match) => htmlEntities[match]);
+function sumPrimes(num) {
+  // Prime number sieve
+  let isPrime = Array(num + 1).fill(true);
+  // 0 and 1 are not prime
+  isPrime[0] = false;
+  isPrime[1] = false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (isPrime[i]) {
+      // i has not been marked false -- it is prime
+      for (let j = i * i; j <= num; j += i) isPrime[j] = false;
+    }
+  }
+
+  // Sum all values still marked prime
+  return isPrime.reduce((sum, prime, index) => (prime ? sum + index : sum), 0);
 }
 
+// function sumPrimes(num) {
+//   var sum = 0;
+//   if (num < 2) return 0;
+//   function isPrime(num) {
+//     //We only need to check up to the square root because the square root
+//     //of a number is the largest possible unique divisor.
+//     for (var i = 2; i <= Math.sqrt(num); i++) {
+//       if (num % i === 0) return false;
+//     }
+//     return true;
+//   }
+//   for (var i = 2; i <= num; i++) {
+//     if (isPrime(i)) {
+//       sum += i;
+//     }
+//   }
+//   return sum;
+// }
+
+print(sumPrimes(977));
 // test here
-print(convertHTML("Dolce & Gabbana"));
+// function sumFibs(num) {
+//   var sum = 2;
+//   var currFab = 1;
+//   var prevFab = 1;
+//   for (var i = 2; i <= num; i++) {
+//     if (i === currFab + prevFab) {
+//       prevFab = currFab;
+//       currFab = i;
+//       if (i % 2 !== 0) sum += i;
+//     }
+//   }
+//   return sum;
+// }
+// print(sumFibs(4000000));
+// function convertHTML(str) {
+//   // Use Object Lookup to declare as many HTML entities as needed.
+//   const htmlEntities = {
+//     "&": "&amp;",
+//     "<": "&lt;",
+//     ">": "&gt;",
+//     '"': "&quot;",
+//     "'": "&apos;",
+//   };
+//   // Using a regex, replace characters with it's corresponding html entity
+//   //second argument in replace is a method that deals with the match character
+//   return str.replace(/([&<>\"'])/g, (match) => htmlEntities[match]);
+// }
+
+// // test here
+// print(convertHTML("Dolce & Gabbana"));
 
 // function convertHTML(str) {
 //   var newStr = "";
