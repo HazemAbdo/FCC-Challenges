@@ -1,37 +1,52 @@
 function print(str) {
   console.log(str);
 }
-function range(start, end) {
-  return Array(end - start + 1)
-    .fill()
-    .map((_, idx) => start + idx);
-}
-function smallestCommons(arr) {
-  //sort arr in ascending order
-  arr.sort(function (a, b) {
-    return a - b;
-  });
-  let max = Math.max(...arr);
-  let incr = max;
-  arr = range(arr[0], arr[1]);
-  let flag = true;
-  while (flag === true) {
-    arr.map((i) => {
-      if (max % i !== 0) {
-        flag = false;
-      }
-    });
-    if (flag === false) {
-      max += incr;
+function dropElements(arr, func) {
+  let flag = false;
+  return arr.filter(function (item) {
+    if (flag===false&&func(item)) {
       flag = true;
-    } else {
-      flag = false;
     }
-  }
-  return max;
+    return flag;
+  });
 }
 
-print(smallestCommons([1, 5]));
+print(
+  dropElements([1, 2, 3, 4, 1], function (n) {
+    return n >= 3;
+  })
+);
+// function range(start, end) {
+//   return Array(end - start + 1)
+//     .fill()
+//     .map((_, idx) => start + idx);
+// }
+// function smallestCommons(arr) {
+//   //sort arr in ascending order
+//   arr.sort(function (a, b) {
+//     return a - b;
+//   });
+//   let max = Math.max(...arr);
+//   let incr = max;
+//   arr = range(arr[0], arr[1]);
+//   let flag = true;
+//   while (flag === true) {
+//     arr.map((i) => {
+//       if (max % i !== 0) {
+//         flag = false;
+//       }
+//     });
+//     if (flag === false) {
+//       max += incr;
+//       flag = true;
+//     } else {
+//       flag = false;
+//     }
+//   }
+//   return max;
+// }
+
+// print(smallestCommons([1, 5]));
 
 // function sumPrimes(num) {
 //   // Prime number sieve
