@@ -1,21 +1,26 @@
 function print(str) {
   console.log(str);
 }
-function dropElements(arr, func) {
-  let flag = false;
-  return arr.filter(function (item) {
-    if (flag===false&&func(item)) {
-      flag = true;
-    }
-    return flag;
-  });
-}
 
-print(
-  dropElements([1, 2, 3, 4, 1], function (n) {
-    return n >= 3;
-  })
-);
+function flat(arr) {}
+
+print(flat([1, [2], [3, [[4]]]]));
+
+// function dropElements(arr, func) {
+//   let flag = false;
+//   return arr.filter(function (item) {
+//     if (flag === false && func(item)) {
+//       flag = true;
+//     }
+//     return flag;
+//   });
+// }
+
+// print(
+//   dropElements([1, 2, 3, 4, 1], function (n) {
+//     return n >= 3;
+//   })
+// );
 // function range(start, end) {
 //   return Array(end - start + 1)
 //     .fill()
